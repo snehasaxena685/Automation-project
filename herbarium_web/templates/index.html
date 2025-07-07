@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF‑8">
+  <title>CSIR Herbarium Web Logger</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>CSIR Herbarium Digitization</h1>
+    <form method="post">
+      <label>Specimen ID</label><input name="sid" readonly value="{{ sid }}">
+      <label>Herb Name</label>
+      <input id="herb-check" name="herb" list="herbList" onchange="fillFields()">
+      <datalist id="herbList">
+        {% for h in herbs %}<option value="{{ h }}">{{ h }}</option>{% endfor %}
+      </datalist>
+      <label>Scientific Name</label><input id="sci" name="sci">
+      <label>Region</label><input name="region">
+      <label>Weight (g)</label><input name="weight">
+      <label>📸 Image URL</label><input id="imgurl" name="imgurl" placeholder="Online image URL">
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
